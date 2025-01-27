@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #dee2e6;
+    width: 20em;
+    height: 4em;
+    text-align: center;
+}
+
+.table-bordered {
+    border-color: #dee2e6;
+}
+
+.container {
+    padding-top: 20px;
+}
+
+.btn-sm {
+    font-size: 0.875rem;
+}
+
+thead.table-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+@media (max-width: 767px) {
+    th, td {
+        font-size: 0.9rem;
+    }
+}
