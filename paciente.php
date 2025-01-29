@@ -1,3 +1,21 @@
+<?php
+include('conexao.php');
+
+$query = "SELECT id, data_hora, especialidade FROM consulta";
+$resultado = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($resultado) > 0) {
+    $consultas = [];
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $consultas[] = $row;
+    }
+} else {
+    echo "Nenhuma consulta encontrada.";
+}
+
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2dRzbdexmZjF3/NW8MbZgsZ3r8g2PVuIuGnDgM3vqHeZ9M5onVKpnIF57r4d" crossorigin="anonymous">
     <link rel="stylesheet" href="css/paciente.css">
-    <title>Paciente - Consultas</title>
+    <title>Consultas</title>
 </head>
 
 <body class="d-flex justify-content-center align-items-start" style="min-height: 100vh; padding-top: 20px;">
@@ -20,21 +38,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>2025-01-27 14:30</td>
-                    <td>Cardiologia</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>2025-02-03 10:00</td>
-                    <td>Dermatologia</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>2025-02-10 16:45</td>
-                    <td>Ortopedia</td>
-                </tr>
+                <?php
+                
+                foreach ($consultas as $consulta) {
+                    echo "<tr>
+                        <td>{$consulta['id']}</td>
+                        <td>{$consulta['data_hora']}</td>
+                        <td>{$consulta['especialidade']}</td>
+                    </tr>";
+                }
+                ?>
             </tbody>
         </table>
     </div>
