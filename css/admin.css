@@ -1,8 +1,7 @@
-
 body {
     display: flex;
     justify-content: center;
-    min-height: 100vh;
+    height: 100%;
     background-color: #f8f9fa;
 }
 
@@ -21,28 +20,19 @@ th, td {
     padding-top: 20px;
 }
 
-
 .form-row {
     display: flex;
     gap: 12px;
 }
 
-
-.btn-primary {
+.btn-primary, .btn-sm {
     padding: 5px 10px;
     font-size: 1rem;
-    margin-top: 10px;
-    margin-bottom: 20px;
 }
 
-.btn-danger{
-    background-color:rgb(255, 62, 62);
+.btn-danger {
+    background-color: rgb(255, 62, 62);
     color: white;
-}
-
-
-.btn-sm {
-    font-size: 1rem;
 }
 
 thead.table-info {

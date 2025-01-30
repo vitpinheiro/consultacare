@@ -53,10 +53,43 @@
             }
         }
 
-        // Adicionar o evento de exclusão para os botões de exclusão
+        
         document.querySelectorAll('.btn-danger').forEach(button => {
             button.addEventListener('click', function() {
                 var consultaId = this.dataset.consultaId;
                 excluirConsulta(consultaId);
             });
         });
+
+        
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const editButtons = document.querySelectorAll('.edit-button');
+            const editarForm = document.getElementById('editarConsultaForm');
+            const editarFormInputs = editarForm.querySelectorAll('input');
+            const cancelarEdicaoButton = document.getElementById('cancelarEdicao');
+            
+            
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const consultaId = button.getAttribute('data-consulta-id');
+                    const dataHora = button.getAttribute('data-data-hora');
+                    const especialidade = button.getAttribute('data-especialidade');
+                    
+                    
+                    editarForm.querySelector('[name="data_hora"]').value = dataHora; 
+                    editarForm.querySelector('[name="especialidade"]').value = especialidade;
+                    editarForm.querySelector('[name="consulta_id"]').value = consultaId;
+                    
+                    
+                    editarForm.style.display = 'block';
+                });
+            });
+            
+            
+            cancelarEdicaoButton.addEventListener('click', function() {
+                editarForm.style.display = 'none'; 
+            });
+        });
+        
